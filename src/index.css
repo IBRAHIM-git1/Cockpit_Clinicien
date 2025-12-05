@@ -1,0 +1,205 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222 47% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 15%;
+
+    --primary: 174 72% 40%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 222 47% 90%;
+    --secondary-foreground: 222 47% 15%;
+
+    --muted: 222 30% 75%;
+    --muted-foreground: 215 20% 40%;
+
+    --accent: 174 72% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --warning: 38 92% 50%;
+    --warning-foreground: 222 47% 15%;
+
+    --success: 142 72% 45%;
+    --success-foreground: 0 0% 100%;
+
+    --border: 222 30% 85%;
+    --input: 222 30% 92%;
+    --ring: 174 72% 40%;
+
+    --radius: 0.625rem;
+
+    /* Custom Medical Theme */
+    --glow-primary: 174 72% 40%;
+    --glow-warning: 38 92% 50%;
+    --glow-success: 142 72% 45%;
+    --glow-danger: 0 72% 51%;
+
+    --panel-bg: 0 0% 99%;
+    --panel-border: 222 30% 85%;
+    --panel-header: 222 47% 93%;
+
+    --chart-1: 174 72% 40%;
+    --chart-2: 199 89% 48%;
+    --chart-3: 142 72% 45%;
+    --chart-4: 38 92% 50%;
+    --chart-5: 280 72% 60%;
+
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 222 47% 15%;
+    --sidebar-primary: 174 72% 40%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 222 47% 90%;
+    --sidebar-accent-foreground: 222 47% 15%;
+    --sidebar-border: 222 30% 85%;
+    --sidebar-ring: 174 72% 40%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  code, .mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+@layer utilities {
+  .glow-primary {
+    box-shadow: 0 0 20px hsl(var(--glow-primary) / 0.3),
+                0 0 40px hsl(var(--glow-primary) / 0.1);
+  }
+
+  .glow-success {
+    box-shadow: 0 0 15px hsl(var(--glow-success) / 0.4);
+  }
+
+  .glow-warning {
+    box-shadow: 0 0 15px hsl(var(--glow-warning) / 0.4);
+  }
+
+  .glow-danger {
+    box-shadow: 0 0 15px hsl(var(--glow-danger) / 0.4);
+  }
+
+  .panel {
+    @apply bg-[hsl(var(--panel-bg))] border border-[hsl(var(--panel-border))] rounded-lg;
+  }
+
+  .panel-header {
+    @apply bg-[hsl(var(--panel-header))] px-4 py-3 border-b border-[hsl(var(--panel-border))] rounded-t-lg;
+  }
+
+  .metric-card {
+    @apply bg-secondary/50 rounded-lg p-3 border border-border/50;
+  }
+
+  .drag-handle {
+    @apply cursor-grab active:cursor-grabbing;
+  }
+
+  .exercise-block {
+    @apply bg-secondary border border-border rounded-lg p-2 
+           hover:border-primary/50 hover:glow-primary 
+           transition-all duration-200 cursor-pointer;
+  }
+
+  .timeline-slot {
+    @apply min-h-[80px] bg-muted/30 rounded-lg border-2 border-dashed border-border/50
+           hover:border-primary/50 hover:bg-primary/5 transition-all duration-200;
+  }
+
+  .timeline-slot-active {
+    @apply border-primary bg-primary/10;
+  }
+
+  .status-badge {
+    @apply inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium;
+  }
+
+  .status-on-track {
+    @apply bg-success/20 text-[hsl(var(--success))] border border-success/30;
+  }
+
+  .status-warning {
+    @apply bg-warning/20 text-[hsl(var(--warning))] border border-warning/30;
+  }
+
+  .status-critical {
+    @apply bg-destructive/20 text-destructive border border-destructive/30;
+  }
+
+  .ai-message {
+    @apply bg-primary/10 border border-primary/20 rounded-lg p-3;
+  }
+
+  .user-message {
+    @apply bg-secondary border border-border rounded-lg p-3;
+  }
+
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--muted)) transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background: hsl(var(--muted));
+    border-radius: 3px;
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-slide-up {
+  animation: slide-up 0.3s ease-out;
+}
