@@ -1,3 +1,9 @@
+export interface Doctor {
+  id: string;
+  name: string;
+  email: string;
+  department: string;
+}
 export interface Patient {
   id: string;
   name: string;

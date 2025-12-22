@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { AIMessage, EvidenceResult } from '@/types';
-import { mockEvidenceResults } from '@/data/mockData';
+import { mockEvidenceResults, doctor } from '@/data/mockData';
 import {
   Bot,
   Search,
@@ -23,15 +23,7 @@ interface AICopilotPanelProps {
   patientName: string;
 }
 
-const initialMessages: AIMessage[] = [
-  {
-    id: '1',
-    role: 'assistant',
-    content: "Bonjour Dr. Chen! Je suis prêt à vous aider avec le protocole de réadaptation de Sarah Mitchell. J'ai remarqué que son amplitude articulaire a stagné et son adhésion est en dessous de la cible. Voulez-vous que j'analyse la situation?",
-    timestamp: new Date(),
-    type: 'info',
-  },
-];
+// Initial assistant message will use the editable doctor name from the JSON
 
 const suggestions = [
   "Pourquoi l'amplitude stagne-t-elle?",
@@ -42,7 +34,15 @@ const suggestions = [
 
 export function AICopilotPanel({ patientName }: AICopilotPanelProps) {
   const [activeTab, setActiveTab] = useState<'copilot' | 'evidence'>('copilot');
-  const [messages, setMessages] = useState<AIMessage[]>(initialMessages);
+  const [messages, setMessages] = useState<AIMessage[]>(() => [
+    {
+      id: '1',
+      role: 'assistant',
+      content: `Bonjour ${doctor.name}! Je suis prêt à vous aider avec le protocole de réadaptation de ${patientName}. J'ai remarqué que son amplitude articulaire a stagné et son adhésion est en dessous de la cible. Voulez-vous que j'analyse la situation?`,
+      timestamp: new Date(),
+      type: 'info',
+    },
+  ]);
   const [input, setInput] = useState('');
   const [evidenceSearch, setEvidenceSearch] = useState('');
   const [isTyping, setIsTyping] = useState(false);
@@ -121,7 +121,7 @@ export function AICopilotPanel({ patientName }: AICopilotPanelProps) {
   return (
     <div className="h-full flex flex-col panel overflow-hidden">
       {/* Header */}
-      <div className="panel-header flex items-center justify-between">
+      <div className="panel-header flex items-center justify-between px-3 py-2">
         <h2 className="text-sm font-semibold text-foreground flex items-center gap-2">
           <Bot className="w-4 h-4 text-primary" />
           Copilote IA
@@ -130,8 +130,8 @@ export function AICopilotPanel({ patientName }: AICopilotPanelProps) {
       </div>
 
       {/* Tabs */}
-      <Tabs value={activeTab} onValueChange={(v) => setActiveTab(v as 'copilot' | 'evidence')} className="flex-1 flex flex-col overflow-hidden">
-        <TabsList className="mx-3 mt-3 grid grid-cols-2">
+      <Tabs value={activeTab} onValueChange={(v) => setActiveTab(v as 'copilot' | 'evidence')} className="flex-1 flex flex-col overflow-hidden min-h-0">
+        <TabsList className="mx-3 mt-2 grid grid-cols-2 gap-1">
           <TabsTrigger value="copilot" className="text-xs">
             <Sparkles className="w-3.5 h-3.5 mr-1.5" />
             Copilote
@@ -143,10 +143,10 @@ export function AICopilotPanel({ patientName }: AICopilotPanelProps) {
         </TabsList>
 
         {/* Copilot Tab */}
-        <TabsContent value="copilot" className="flex-1 flex flex-col overflow-hidden m-0">
+        <TabsContent value="copilot" className="flex-1 flex flex-col overflow-hidden m-0 min-h-0 p-0">
           {/* Messages */}
-          <ScrollArea className="flex-1 p-3">
-            <div className="space-y-3">
+          <ScrollArea className="flex-1 p-2 min-h-0">
+            <div className="space-y-2">
               {messages.map((message) => (
                 <div
                   key={message.id}
@@ -182,8 +182,8 @@ export function AICopilotPanel({ patientName }: AICopilotPanelProps) {
           </ScrollArea>
 
           {/* Quick Suggestions */}
-          <div className="px-3 py-2 border-t border-border">
-            <div className="flex flex-wrap gap-1.5">
+          <div className="px-3 py-1 border-t border-border flex-shrink-0">
+            <div className="flex flex-wrap gap-1">
               {suggestions.map((suggestion) => (
                 <Badge
                   key={suggestion}
@@ -197,9 +197,9 @@ export function AICopilotPanel({ patientName }: AICopilotPanelProps) {
             </div>
           </div>
 
-          {/* Input */}
-          <div className="p-3 border-t border-border">
-            <div className="flex gap-2">
+          {/* Input (anchored via flex layout) */}
+          <div className="px-2 pb-2 pt-2 border-t border-border bg-background flex-shrink-0 relative z-20">
+            <div className="flex items-center gap-2">
               <Input
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
@@ -207,7 +207,7 @@ export function AICopilotPanel({ patientName }: AICopilotPanelProps) {
                 className="bg-secondary"
                 onKeyDown={(e) => e.key === 'Enter' && handleSendMessage()}
               />
-              <Button onClick={handleSendMessage} disabled={!input.trim() || isTyping}>
+              <Button size="sm" onClick={handleSendMessage} disabled={!input.trim() || isTyping} className="h-9 w-9 p-0">
                 <Send className="w-4 h-4" />
               </Button>
             </div>
@@ -215,9 +215,9 @@ export function AICopilotPanel({ patientName }: AICopilotPanelProps) {
         </TabsContent>
 
         {/* Evidence Tab */}
-        <TabsContent value="evidence" className="flex-1 flex flex-col overflow-hidden m-0">
+        <TabsContent value="evidence" className="flex-1 flex flex-col overflow-hidden m-0 min-h-0 p-0">
           {/* Search */}
-          <div className="p-3 border-b border-border">
+          <div className="p-2 border-b border-border">
             <div className="relative">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
               <Input
@@ -230,7 +230,7 @@ export function AICopilotPanel({ patientName }: AICopilotPanelProps) {
           </div>
 
           {/* Results */}
-          <ScrollArea className="flex-1 p-3">
+          <ScrollArea className="flex-1 p-2">
             <div className="space-y-3">
               {filteredEvidence.map((result) => (
                 <div

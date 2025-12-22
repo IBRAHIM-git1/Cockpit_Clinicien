@@ -1,6 +1,7 @@
 import { Activity, Bell, Settings, User } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
+import { doctor } from '@/data/mockData';
 
 export function Header() {
   return (
@@ -42,8 +43,8 @@ export function Header() {
             <User className="w-4 h-4 text-primary" />
           </div>
           <div className="hidden sm:block">
-            <p className="text-sm font-medium text-foreground">Dr. Chen</p>
-            <p className="text-xs text-muted-foreground">Orthopédie</p>
+            <p className="text-sm font-medium text-foreground">Dr. {doctor.name}</p>
+            <p className="text-xs text-muted-foreground">{doctor.department}</p>
           </div>
         </div>
       </div>
