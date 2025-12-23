@@ -3,12 +3,23 @@ import { Header } from '@/components/Header';
 import { PatientContextPanel } from '@/components/PatientContextPanel';
 import { ProtocolCanvas } from '@/components/ProtocolCanvas';
 import { AICopilotPanel } from '@/components/AICopilotPanel';
-import { mockPatient } from '@/data/mockData';
+import { mockPatient, patients } from '@/data/mockData';
 import { ScheduledExercise } from '@/types';
 import { toast } from '@/hooks/use-toast';
 
 const Index = () => {
-  const [patient] = useState(mockPatient);
+  const [patient] = useState(() => {
+    try {
+      const selectedId = localStorage.getItem('selectedPatientId');
+      if (selectedId) {
+        const found = patients.find((p) => p.id === selectedId);
+        if (found) return found;
+      }
+    } catch (e) {
+      // ignore
+    }
+    return mockPatient;
+  });
 
   const handlePublishProtocol = (exercises: ScheduledExercise[]) => {
     // Simulate exporting to patient app

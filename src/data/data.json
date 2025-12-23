@@ -18,6 +18,99 @@
     "painLevels": [6, 5, 7, 6, 8, 7, 6],
     "intensityLevels": [4, 5, 5, 6, 4, 5, 5]
   },
+  "patients": [
+    {
+      "id": "1",
+      "name": "Fatima BENALI",
+      "age": 34,
+      "injuryType": "ACL Reconstruction",
+      "postOpDay": 21,
+      "status": "warning",
+      "statusLabel": "High Pain Alert",
+      "romData": [45, 52, 58, 62, 65, 63, 64],
+      "adherenceScore": 72,
+      "painLevels": [6, 5, 7, 6, 8, 7, 6],
+      "intensityLevels": [4, 5, 5, 6, 4, 5, 5]
+    },
+    {
+      "id": "2",
+      "name": "Léa Martin",
+      "age": 28,
+      "injuryType": "Meniscus Repair",
+      "postOpDay": 10,
+      "status": "on-track",
+      "statusLabel": "Progression Normale",
+      "romData": [30, 40, 50, 55, 60],
+      "adherenceScore": 88,
+      "painLevels": [3, 2, 3, 2, 2],
+      "intensityLevels": [3, 3, 4, 4, 3]
+    },
+    {
+      "id": "3",
+      "name": "Marc Dubois",
+      "age": 45,
+      "injuryType": "Rotator Cuff Repair",
+      "postOpDay": 5,
+      "status": "on-track",
+      "statusLabel": "Progression Normale",
+      "romData": [20, 25, 30, 35],
+      "adherenceScore": 95,
+      "painLevels": [4, 3, 3, 2],
+      "intensityLevels": [2, 3, 3, 4]
+    },
+    {
+      "id": "4",
+      "name": "Sophie Laurent",
+      "age": 31,
+      "injuryType": "ACL Reconstruction",
+      "postOpDay": 35,
+      "status": "critical",
+      "statusLabel": "Adhésion Faible",
+      "romData": [50, 55, 57, 58, 59],
+      "adherenceScore": 45,
+      "painLevels": [7, 8, 7, 8, 9],
+      "intensityLevels": [3, 2, 2, 3, 2]
+    },
+    {
+      "id": "5",
+      "name": "Jean Moreau",
+      "age": 52,
+      "injuryType": "Hip Replacement",
+      "postOpDay": 14,
+      "status": "on-track",
+      "statusLabel": "Progression Normale",
+      "romData": [40, 45, 50, 55],
+      "adherenceScore": 82,
+      "painLevels": [5, 4, 4, 3],
+      "intensityLevels": [4, 4, 5, 5]
+    },
+    {
+      "id": "6",
+      "name": "Amine El Haddad",
+      "age": 29,
+      "injuryType": "Shoulder Dislocation",
+      "postOpDay": 12,
+      "status": "warning",
+      "statusLabel": "Douleur Élevée",
+      "romData": [25, 30, 35, 38],
+      "adherenceScore": 68,
+      "painLevels": [6, 7, 6, 7],
+      "intensityLevels": [3, 4, 4, 4]
+    },
+    {
+      "id": "7",
+      "name": "Nadia Bensalem",
+      "age": 40,
+      "injuryType": "Knee Arthroscopy",
+      "postOpDay": 18,
+      "status": "on-track",
+      "statusLabel": "Progression Normale",
+      "romData": [40, 48, 55, 60],
+      "adherenceScore": 90,
+      "painLevels": [4, 3, 3, 2],
+      "intensityLevels": [4, 5, 5, 5]
+    }
+  ],
   "exerciseLibrary": [
     {
       "id": "ex1",

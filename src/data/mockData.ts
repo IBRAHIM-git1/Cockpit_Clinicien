@@ -6,4 +6,5 @@ export const exerciseLibrary: Exercise[] = data.exerciseLibrary as Exercise[];
 export const mockEvidenceResults: EvidenceResult[] = data.mockEvidenceResults as EvidenceResult[];
 export const daysOfWeek: string[] = data.daysOfWeek as string[];
 export const doctor: Doctor = data.mockDoctor as Doctor;
+export const patients: Patient[] = (data.patients as Patient[]) || [data.mockPatient as Patient];
 

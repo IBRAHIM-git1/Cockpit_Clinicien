@@ -126,7 +126,7 @@ export function AICopilotPanel({ patientName }: AICopilotPanelProps) {
           <Bot className="w-4 h-4 text-primary" />
           Copilote IA
         </h2>
-        <span className="text-xs text-muted-foreground">COMMENT</span>
+        {/* <span className="text-xs text-muted-foreground">COMMENT</span> */}
       </div>
 
       {/* Tabs */}

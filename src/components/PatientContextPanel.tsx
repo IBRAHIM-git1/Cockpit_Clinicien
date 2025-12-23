@@ -48,7 +48,7 @@ export function PatientContextPanel({ patient }: PatientContextPanelProps) {
           <User className="w-4 h-4 text-primary" />
           Contexte du Patient
         </h2>
-        <span className="text-xs text-muted-foreground">QUI</span>
+        {/* <span className="text-xs text-muted-foreground">QUI</span> */}
       </div>
 
       <div className="flex-1 overflow-y-auto scrollbar-thin p-4 space-y-4">

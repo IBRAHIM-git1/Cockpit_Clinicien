@@ -79,7 +79,7 @@ export function ProtocolCanvas({ postOpDay, onPublish }: ProtocolCanvasProps) {
         </h2>
         <div className="flex items-center gap-2">
           <span className="text-xs text-muted-foreground">Phase 2 • Semaine 3</span>
-          <span className="text-xs text-muted-foreground">QUOI</span>
+          {/* <span className="text-xs text-muted-foreground">QUOI</span> */}
         </div>
       </div>
 
