@@ -78,28 +78,28 @@ export default function Exercises() {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="max-h-screen flex flex-col bg-background overflow-hidden">
       {/* Header */}
         <Header />
-      <main className="max-w-7xl mx-auto p-6 flex gap-6">
+      <main className="max-w-7xl mx-auto p-1 flex gap-1 flex-1 overflow-hidden">
         {/* Main Content */}
-        <section className="flex-1 space-y-4">
+        <section className="flex-1 space-y-1">
           {/* Search and Filters */}
-          <div className="bg-card rounded-xl shadow-sm border border-border p-6 mb-6">
-            <div className="flex items-center justify-between mb-4">
+          <div className="bg-card rounded-lg shadow-sm border border-border p-2 mb-1">
+            <div className="flex items-center justify-between mb-1">
               <div>
-                <h2 className="text-2xl font-semibold text-foreground">Bibliothèque d'exercices</h2>
-                <p className="text-sm text-muted-foreground mt-1">Personnalisez les paramètres par défaut de chaque exercice</p>
+                <h2 className="text-lg font-semibold text-foreground">Bibliothèque d'exercices</h2>
+                <p className="text-xs text-muted-foreground mt-0">Personnalisez les paramètres par défaut de chaque exercice</p>
               </div>
               <div className="text-sm font-medium text-muted-foreground bg-background px-3 py-1.5 rounded-lg">
                 {list.length} exercice{list.length !== 1 ? 's' : ''}
               </div>
             </div>
 
-            <div className="flex gap-3">
+            <div className="flex gap-1">
               <div className="flex-1 relative">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
-                <Input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Rechercher par nom ou groupe musculaire..." className="pl-10" />
+                <Search className="absolute left-2 top-1/2 -translate-y-1/2 w-3 h-3 text-muted-foreground" />
+                <Input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Rechercher..." className="pl-8 text-xs h-7" />
               </div>
 
               <select
@@ -263,11 +263,11 @@ export default function Exercises() {
 
         {/* Sidebar */}
         <aside className="w-80 hidden lg:block">
-            <div className="sticky top-24 space-y-4">
+            <div className="sticky top-24 space-y-3">
                 
-                <div className="rounded-xl border border-emerald-200 bg-emerald-50 p-5">
-                <h3 className="font-semibold mb-3 text-emerald-900">Statistiques</h3>
-                    <div className="space-y-2 text-sm">
+                <div className="rounded-xl border border-emerald-200 bg-emerald-50 p-4">
+                <h3 className="font-semibold mb-2 text-emerald-900">Statistiques</h3>
+                    <div className="space-y-1 text-sm">
                         <div className="flex justify-between">
                         <span className="text-emerald-700">Total exercices</span>
                         <span className="font-semibold">{exerciseLibrary.length}</span>
@@ -284,8 +284,8 @@ export default function Exercises() {
                         </div>
                     </div>
                 </div>
-                <div className="bg-card rounded-xl shadow-sm border border-border p-5">
-                    <div className="flex items-center gap-2 mb-4">
+                <div className="bg-card rounded-xl shadow-sm border border-border p-4">
+                    <div className="flex items-center gap-2 mb-3">
                         <Info className="w-5 h-5 text-muted-foreground" />
                         <h3 className="font-semibold text-foreground">Guide d'utilisation</h3>
                     </div>

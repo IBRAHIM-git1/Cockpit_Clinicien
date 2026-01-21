@@ -43,10 +43,10 @@ const Index = () => {
   };
 
   return (
-    <div className="h-screen flex flex-col bg-background overflow-hidden">
+    <div className="min-h-screen max-h-screen flex flex-col bg-background overflow-hidden">
       <Header />
       
-      <main className="flex-1 flex overflow-hidden p-4 gap-4">
+      <main className="flex-1 flex overflow-hidden p-1 gap-1">
         {/* Left Panel - Patient Context */}
         <div className="w-72 flex-shrink-0">
           <PatientContextPanel patient={patient} />
